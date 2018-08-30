@@ -18,6 +18,7 @@ $ pod install
 ## Use range slider
 
 ```swift
+let rangeSlider: RangeSlider = RangeSlider(frame: yourFrame)
 view.addSubview(rangeSlider)
 rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(_:)), for: .valueChanged)
 ```
@@ -50,12 +51,12 @@ You can access `changedValue` as below.
 
 ```swift
 @objc func rangeSliderValueChanged(_ rangeSlider: RangeSlider) -> Void {
-        if let value = rangeSlider.changedValue {
-            // CODE
-            print(value)
-        }
-        rangeSlider.updatePreviousValues()
+    if let value = rangeSlider.changedValue {
+        // CODE
+        print(value)
     }
+    rangeSlider.updatePreviousValues()
+}
 ```
 
 ## License
