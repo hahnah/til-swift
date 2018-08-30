@@ -2,7 +2,7 @@
 
 Memo (or tiny project) of what I learned about Swift.
 
-Each topic uses each branch separately.
+Each topic uses each branch separately.
 
 ## Topics
 
