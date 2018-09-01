@@ -94,6 +94,5 @@ class ViewController: UIViewController {
         rangeSlider.updatePreviousValues()
     }
 
-
 }
 
