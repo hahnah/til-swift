@@ -43,7 +43,7 @@ rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(_:)), for:
 
 ## Extension
 
-[The extension](https://github.com/hahnah/til-swift/blob/range-slider/RangeSlider/RangeSlider/RangeSlider%2BChangedValue.swift) of range slider provides a property to access an impormation. 
+[The extension](https://github.com/hahnah/til-swift/blob/range-slider/RangeSlider/RangeSlider%2BChangedValue.swift) of range slider provides a property to access an impormation. 
 
 + `changedValue` : The value corresponding to the changed thumb current position
 
