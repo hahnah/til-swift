@@ -6,7 +6,7 @@ Generate square thumbnail of your image file. Written in Swift4.
 
 You can see essential code in  `./ThumbnailGenerator/ViewController+ThumbnailGenerator.swift`.
 
-![overview](https://user-images.githubusercontent.com/32125066/44008112-99255d9e-9eda-11e8-8e00-f3ab418c034d.png)
+![overview](https://user-images.githubusercontent.com/32125066/44945306-2dc77400-ae21-11e8-952c-29ddd75723de.png)
 
 See also [my blog post](https://superhahnah.com/swift-thumbnail-generator/).
 
