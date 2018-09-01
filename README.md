@@ -1,19 +1,14 @@
-# Today I learned about Swift
+# ThumbnailGenerator
 
-Memo (or tiny project) of what I learned about Swift.
+## Overview
 
-Each topic uses each branch separately.
+Generate square thumbnail of your image file. Written in Swift4.
 
-## Topics
+You can see essential code in  `./ThumbnailGenerator/ViewController+ThumbnailGenerator.swift`.
 
-+ [range-slider](https://github.com/hahnah/til-swift/tree/range-slider) : A simple sample of range slider in Swift
+![overview](https://user-images.githubusercontent.com/32125066/44008112-99255d9e-9eda-11e8-8e00-f3ab418c034d.png)
 
-## Author
-
-`hahnah`
-
-+ [Site](https://superhahnah.com)
-+ [Twitter](https://twitter.com/superhahnah)
+See also [my blog post](https://superhahnah.com/swift-thumbnail-generator/).
 
 ## License
 
