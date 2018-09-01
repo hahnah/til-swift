@@ -7,6 +7,7 @@ Each topic uses each branch separately.
 ## Topics
 
 + [range-slider](https://github.com/hahnah/til-swift/tree/range-slider) : A simple sample of range slider in Swift
++ [thumbnail-generator](https://github.com/hahnah/til-swift/tree/thumbnail-generator) : A sample of squire thumbnail generator in Swift
 
 ## Author
 
