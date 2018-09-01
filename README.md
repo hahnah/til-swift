@@ -1,20 +1,19 @@
-# Today I learned about Swift
+# Example of Modal Transition Styles
 
-Memo (or tiny project) of what I learned about Swift.
+There are four styles of modal transition as built-in.
 
-Each topic uses each branch separately.
++ coverVertical
++ crossDissolve
++ flipHorizontal
++ partialCurl
 
-## Topics
+![demo](./demo.gif)
 
-+ [range-slider](https://github.com/hahnah/til-swift/tree/range-slider) : A simple sample of range slider in Swift
-+ [thumbnail-generator](https://github.com/hahnah/til-swift/tree/thumbnail-generator) : A sample of squire thumbnail generator in Swift
+Example code to set the modal transition style to `coverVertical` :
 
-## Author
-
-`hahnah`
-
-+ [Site](https://superhahnah.com)
-+ [Twitter](https://twitter.com/superhahnah)
+```swift
+destinationViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+```
 
 ## License
 
