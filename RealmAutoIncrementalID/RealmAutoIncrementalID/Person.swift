@@ -8,7 +8,7 @@ class Person: Object {
         return "id"
     }
     
-    // ID を increment して返す
+    // returns incremented ID
     static func newID(realm: Realm) -> Int {
         if let person = realm.objects(Person.self).sorted(byKeyPath: "id").last {
             return person.id + 1
@@ -17,15 +17,8 @@ class Person: Object {
         }
     }
     
-    // increment された ID を持つ新規 Person オブジェクトを返す
-    /*
-    static func create(realm: Realm) -> Person {
-        let person: Person = Person()
-        person.id = newID(realm: realm)
-        return person
-    }
-    */
-    
+    // returns a new dummy object
+    // or returns an existing object to be updated as a non-dummy object
     static func create(realm: Realm, asDummy: Bool = false) -> Person {
         if asDummy {
             let newDummyPerson: Person = Person()
