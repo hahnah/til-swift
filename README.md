@@ -2,8 +2,6 @@
 
 Memo (or tiny project) of what I learned about Swift.
 
-Each topic uses each branch separately.
-
 ## Topics
 
 + [modal-animation](https://github.com/hahnah/til-swift/tree/modal-animation) : Examples of modal transition styles
