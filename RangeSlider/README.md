@@ -4,7 +4,7 @@
 
 A simple range slider sample in Swift4.
 
-![capture](https://user-images.githubusercontent.com/32125066/44862233-37cc6400-acb5-11e8-95a7-405618145666.png)
+![capture](capture.png)
 
 This Sample depends on [WARangeSlider](https://github.com/warchimede/RangeSlider/tree/master) and provides a little bit extension of that.
 
