@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         let documentsDirectory: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let destinationURL: URL = documentsDirectory.appendingPathComponent("myMovie.mov")
         let fileType: AVFileType = AVFileType.mov
-        FileSaveUtility.saveMovie(sourceURL: sourceURL, destinationURL: destinationURL, fileType: fileType)
+        FileSaveUtility.exportMovie(sourceURL: sourceURL, destinationURL: destinationURL, fileType: fileType)
     }
 
     override func didReceiveMemoryWarning() {
