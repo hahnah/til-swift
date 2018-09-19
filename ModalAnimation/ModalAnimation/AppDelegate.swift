@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  ModalAnimation
-//
-//  Created by Natsuki HARAI on 2018/09/01.
-//  Copyright © 2018年 hahnah. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

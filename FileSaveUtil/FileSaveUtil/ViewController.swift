@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  FileSaveUtil
-//
-//  Created by Natsuki HARAI on 2018/09/15.
-//  Copyright © 2018年 hahnah. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 

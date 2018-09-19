@@ -95,7 +95,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Natsuki Harai";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					1F963C5E21209032002B3A09 = {
 						CreatedOnToolsVersion = 9.4.1;
