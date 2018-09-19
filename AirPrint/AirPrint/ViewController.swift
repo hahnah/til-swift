@@ -2,7 +2,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let textView: UITextView = UITextView()
     var printingImage: UIImage?
 
     override func viewDidLoad() {
