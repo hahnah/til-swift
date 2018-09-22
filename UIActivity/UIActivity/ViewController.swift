@@ -42,15 +42,17 @@ class ViewController: UIViewController {
             // UIActivityType.assignToContact,
             // UIActivityType.copyToPasteboard,
             // UIActivityType.mail,
-            // UIActivityType.markupAsPDF,
             // UIActivityType.message,
             // UIActivityType.openInIBooks,
             // UIActivityType.postToFacebook,
+            UIActivityType.postToFlickr,
+            UIActivityType.postToTencentWeibo
             // UIActivityType.postToTwitter,
             // UIActivityType.postToVimeo,
             // UIActivityType.postToWeibo,
-            // UIActivityType.postToFlickr,
-            UIActivityType.postToTencentWeibo
+            // UIActivityType.print,
+            // UIActivityType.saveToCameraRoll,
+            // UIActivityType.markupAsPDF
         ]
         activityViewController.excludedActivityTypes = excludedActivityTypes
         
