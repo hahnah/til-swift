@@ -32,12 +32,13 @@ class ViewController: UIViewController {
     }
 
     @objc func showActivityView(_ sender: UIBarButtonItem) -> Void {
-        let activityItems: Array<UIImage> = [self.printingImage!]
+        let activityItems: Array<Any> = [self.printingImage!]
         
         let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         
         let excludedActivityTypes: Array<UIActivityType> = [
             // UIActivityType.addToReadingList,
+            // UIActivityType.airDrop,
             // UIActivityType.assignToContact,
             // UIActivityType.copyToPasteboard,
             // UIActivityType.mail,
