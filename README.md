@@ -14,10 +14,10 @@ Memo (or tiny project) of what I learned about Swift.
 
 ## Author
 
-`hahnah`
+hahnah
 
-+ [Site: Hahnah's Toybox](https://superhahnah.com)
-+ [Twitter](https://twitter.com/superhahnah)
++ WebSite: [Hahnah's Toybox](https://superhahnah.com)
++ Twitter: [@superhahnah](https://twitter.com/superhahnah)
 
 ## License
 
