@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         toastButton.center = CGPoint(x: self.view.center.x, y: self.view.bounds.height * 0.7)
         toastButton.tintColor = UIColor.white
         toastButton.backgroundColor = UIColor.blue
-        toastButton.setTitle("PRINT", for: .normal)
+        toastButton.setTitle("TOAST", for: .normal)
         toastButton.addTarget(self, action: #selector(self.toastButtonDidTapped(_:)), for: .touchUpInside)
         self.view.addSubview(toastButton)
     }
