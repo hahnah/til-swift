@@ -6,7 +6,7 @@
 
 ### Export movie
 
-Call `FileSaveUtility.exportMovie(sourceURL:, destinationURL:, fileType:)`method to export movie.
+Call `FileSaveUtility.exportMovie(sourceURL:destinationURL:fileType:)`method to export movie.
 
 #### Sapmle
 
