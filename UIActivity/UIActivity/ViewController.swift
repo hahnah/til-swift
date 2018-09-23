@@ -56,6 +56,22 @@ class ViewController: UIViewController {
         ]
         activityViewController.excludedActivityTypes = excludedActivityTypes
         
+        activityViewController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, activityError: Error?) in
+            
+            guard completed else { return }
+            
+            switch activityType {
+            case UIActivityType.postToTwitter:
+                print("Tweeted")
+            case UIActivityType.print:
+                print("Printed")
+            case UIActivityType.saveToCameraRoll:
+                print("Saved to Camera Roll")
+            default:
+                print("Done")
+            }
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
 
