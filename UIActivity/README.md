@@ -4,7 +4,7 @@ A Sample iOS Project of UIActivity.
 
 See the file `UIActivity/UIActivity/ViewController.swift` to see the usage of UIActivityViewController.
 
-# Screenshot
+## Screenshot
 
 ![screenshot](screenshot.png)
 
