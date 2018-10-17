@@ -5,6 +5,7 @@ Memo (or tiny project) of what I learned about Swift.
 ## Topics
 
 + [AirPrint](https://github.com/hahnah/til-swift/tree/master/AirPrint) : An example usage of AirPrint 
++ [AuthorizationRequest](https://github.com/hahnah/til-swift/tree/master/AuthorizationRequest) : Request authorization of privacy
 + [FileSaveUtil](https://github.com/hahnah/til-swift/tree/master/FileSaveUtil) : File save(or export) utility. (Only supports movie export so far)
 + [ModalAnimation](https://github.com/hahnah/til-swift/tree/master/ModalAnimation) : An examples of modal transition styles
 + [RangeSlider](https://github.com/hahnah/til-swift/tree/master/RangeSlider) : A simple sample of range slider in Swift
