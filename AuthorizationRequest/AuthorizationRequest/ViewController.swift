@@ -22,11 +22,11 @@ class ViewController: UIViewController {
         saveButton.tintColor = UIColor.white
         saveButton.backgroundColor = UIColor.red
         saveButton.setTitle("Save Image", for: .normal)
-        saveButton.addTarget(self, action: #selector(self.onClickSaveButton(sender:)), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(self.checkAuthorization(sender:)), for: .touchUpInside)
         self.view.addSubview(saveButton)
     }
     
-    @objc func onClickSaveButton(sender: UIButton) {
+    @objc func checkAuthorization(sender: UIButton) {
         if PHPhotoLibrary.authorizationStatus() != .authorized {
             PHPhotoLibrary.requestAuthorization { status in
                 if status == .authorized {
