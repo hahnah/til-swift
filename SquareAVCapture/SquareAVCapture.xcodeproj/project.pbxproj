@@ -12,6 +12,7 @@
 		1F26FBB72175F36100A87222 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F26FBB52175F36100A87222 /* Main.storyboard */; };
 		1F26FBB92175F36200A87222 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F26FBB82175F36200A87222 /* Assets.xcassets */; };
 		1F26FBBC2175F36200A87222 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F26FBBA2175F36200A87222 /* LaunchScreen.storyboard */; };
+		1F26FBE62178745400A87222 /* MovieCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F26FBE52178745400A87222 /* MovieCropper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1F26FBB82175F36200A87222 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F26FBBB2175F36200A87222 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F26FBBD2175F36200A87222 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F26FBE52178745400A87222 /* MovieCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCropper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				1F26FBB12175F36100A87222 /* AppDelegate.swift */,
 				1F26FBB32175F36100A87222 /* ViewController.swift */,
+				1F26FBE52178745400A87222 /* MovieCropper.swift */,
 				1F26FBB52175F36100A87222 /* Main.storyboard */,
 				1F26FBB82175F36200A87222 /* Assets.xcassets */,
 				1F26FBBA2175F36200A87222 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				1F26FBB42175F36100A87222 /* ViewController.swift in Sources */,
 				1F26FBB22175F36100A87222 /* AppDelegate.swift in Sources */,
+				1F26FBE62178745400A87222 /* MovieCropper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

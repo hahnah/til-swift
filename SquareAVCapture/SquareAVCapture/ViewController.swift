@@ -10,116 +10,81 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showCameraPreview()
+        self.view.backgroundColor = .black
+        self.setUpCamera()
     }
     
-    func showCameraPreview() {
+    func setUpCamera() {
         let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)
         let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
+        let captureSession = AVCaptureSession()
         
-        do {
-            if videoDevice == nil || audioDevice == nil {
-                throw NSError(domain: "device error", code: -1, userInfo: nil)
-            }
-            let captureSession = AVCaptureSession()
-            
-            // video inputを capture sessionに追加
-            let videoInput = try AVCaptureDeviceInput(device: videoDevice!)
-            captureSession.addInput(videoInput)
-            
-            // audio inputを capture sessionに追加
-            let audioInput = try AVCaptureDeviceInput(device: audioDevice!)
-            captureSession.addInput(audioInput)
-            
-            // max 30sec
-            self.fileOutput.maxRecordedDuration = CMTimeMake(value: 30, timescale: 1)
-            captureSession.addOutput(fileOutput)
-            
-            // プレビュー
-            let videoLayer : AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoLayer.frame = self.view.bounds
-            videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            self.view.layer.addSublayer(videoLayer)
-            
-            captureSession.startRunning()
-            
-            setUpButton()
-        } catch {
-            // エラー処理
-        }
-    }
-    
-    func setUpButton() {
-        recordButton = UIButton(frame: CGRect(x: 0,y: 0,width: 120,height: 50))
-        recordButton.backgroundColor = UIColor.gray
-        recordButton.layer.masksToBounds = true
-        recordButton.setTitle("Record", for: .normal)
-        recordButton.layer.cornerRadius = 20.0
-        recordButton.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
-        recordButton.addTarget(self, action: #selector(self.onClickRecordButton(sender:)), for: .touchUpInside)
+        // 映像入力を設定
+        let videoInput = try! AVCaptureDeviceInput(device: videoDevice!)
+        captureSession.addInput(videoInput)
         
+        // 音声入力を設定
+        let audioInput = try! AVCaptureDeviceInput(device: audioDevice!)
+        captureSession.addInput(audioInput)
+        
+        // 動画の最大時間を 60秒 に設定
+        self.fileOutput.maxRecordedDuration = CMTimeMake(value: 60, timescale: 1)
+        captureSession.addOutput(fileOutput)
+        
+        // 正方形のプレビュー
+        let videoLayer : AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoLayer.frame = CGRect(x: 0, y: (self.view.bounds.height - self.view.bounds.width) / 2, width: self.view.bounds.width, height: self.view.bounds.width)
+        videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.view.layer.addSublayer(videoLayer)
+        
+        // カメラ(とマイク)のセッションを開始
+        captureSession.startRunning()
+        
+        // 録画ボタンを配置
+        self.recordButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        self.recordButton.backgroundColor = UIColor.gray
+        self.recordButton.layer.masksToBounds = true
+        self.recordButton.setTitle("Record", for: .normal)
+        self.recordButton.layer.cornerRadius = 20
+        self.recordButton.layer.position = CGPoint(x: self.view.bounds.width / 2, y:self.view.bounds.height - 100)
+        self.recordButton.addTarget(self, action: #selector(self.onClickRecordButton(sender:)), for: .touchUpInside)
         self.view.addSubview(recordButton)
     }
     
     @objc func onClickRecordButton(sender: UIButton) {
-        if !isRecording {
-            // 録画開始
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let documentsDirectory = paths[0] as String
-            let filePath : String? = "\(documentsDirectory)/temp.mp4"
-            let fileURL : NSURL = NSURL(fileURLWithPath: filePath!)
-            fileOutput.startRecording(to: fileURL as URL, recordingDelegate: self)
+        if !self.isRecording {
+            // 録画を開始
+            let tempDirectory: URL = URL(fileURLWithPath: NSTemporaryDirectory())
+            let fileURL: URL = tempDirectory.appendingPathComponent("mytemp1.mov")
+            fileOutput.startRecording(to: fileURL, recordingDelegate: self)
             
-            isRecording = true
-            changeButtonColor(target: recordButton, color: UIColor.red)
-            recordButton.setTitle("●Recording", for: .normal)
+            self.isRecording = true
+            self.recordButton.backgroundColor = .red
+            self.recordButton.setTitle("●Recording", for: .normal)
         } else {
-            // 録画終了
+            // 録画を終了
             fileOutput.stopRecording()
             
-            isRecording = false
-            changeButtonColor(target: recordButton, color: UIColor.gray)
-            recordButton.setTitle("Record", for: .normal)
+            self.isRecording = false
+            self.recordButton.backgroundColor = .gray
+            self.recordButton.setTitle("Record", for: .normal)
         }
-    }
-    
-    func changeButtonColor(target: UIButton, color: UIColor) {
-        target.backgroundColor = color
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        let tempDirectory: URL = URL(fileURLWithPath: NSTemporaryDirectory())
+        let croppedMovieFileURL: URL = tempDirectory.appendingPathComponent("mytemp2.mov")
         
-        //self.requestAuthorizationOfPhotoLibraryUsege()
-        
-        if PHPhotoLibrary.authorizationStatus() != .authorized {
-            PHPhotoLibrary.requestAuthorization { status in
-                if status == .authorized {
-                    self.saveMovieToPhotos(fromURL: outputFileURL)
-                } else if status == .denied {
-                    let title: String = "Failed to save video"
-                    let message: String = "Allow this app to access Photos."
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
-                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
-                            return
-                        }
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                    })
-                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-                    alert.addAction(settingsAction)
-                    alert.addAction(closeAction)
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        } else {
-            self.saveMovieToPhotos(fromURL: outputFileURL)
-        }
+        // 録画された動画を正方形にクロッピングする
+        MovieCropper.exportSquareMovie(sourceURL: outputFileURL, destinationURL: croppedMovieFileURL, fileType: .mov, completion: {
+            // 正方形にクロッピングされた動画をフォトライブラリに保存
+            self.saveToPhotoLibrary(fileURL: croppedMovieFileURL)
+        })
     }
     
-    func saveMovieToPhotos(fromURL atURL: URL) {
+    func saveToPhotoLibrary(fileURL: URL) {
         PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: atURL)
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)
         }) { saved, error in
             let success = saved && (error == nil)
             let title = success ? "Success" : "Error"
