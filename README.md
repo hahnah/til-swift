@@ -10,6 +10,7 @@ Memo (or tiny project) of what I learned about Swift.
 + [ModalAnimation](https://github.com/hahnah/til-swift/tree/master/ModalAnimation) : An examples of modal transition styles
 + [RangeSlider](https://github.com/hahnah/til-swift/tree/master/RangeSlider) : A simple sample of range slider in Swift
 + [RealmAutoIncrementalID](https://github.com/hahnah/til-swift/tree/master/RealmAutoIncrementalID) : Auto incremental ID with Realm Swift
++ [SquareAVCapture](https://github.com/hahnah/til-swift/tree/master/SquareAVCapture) : A sample of capturing square movie.
 + [ThunmbnailGenerator](https://github.com/hahnah/til-swift/tree/master/ThumbnailGenerator) : A sample of squire thumbnail generator in Swift
 + [UIActivity](https://github.com/hahnah/til-swift/tree/master/UIActivity) : A sample usage of UIActivityViewController
 
