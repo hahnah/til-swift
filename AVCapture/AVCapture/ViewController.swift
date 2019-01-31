@@ -23,7 +23,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     func setUpCamera() {
         let captureSession: AVCaptureSession = AVCaptureSession()
-        let videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
+        let videoDevice: AVCaptureDevice? = self.defaultCamera()
         let audioDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.audio)
         
         // video input setting
@@ -55,6 +55,16 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         self.recordButton.layer.position = CGPoint(x: self.view.bounds.width / 2, y:self.view.bounds.height - 100)
         self.recordButton.addTarget(self, action: #selector(self.onClickRecordButton(sender:)), for: .touchUpInside)
         self.view.addSubview(recordButton)
+    }
+    
+    func defaultCamera() -> AVCaptureDevice? {
+        if let device = AVCaptureDevice.default(.builtInDualCamera, for: AVMediaType.video, position: .back) {
+            return device
+        } else if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back) {
+            return device
+        } else {
+            return nil
+        }
     }
     
     @objc func onClickRecordButton(sender: UIButton) {
