@@ -11,6 +11,8 @@ import AVFoundation
 import Photos
 
 class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+    
+    var videoDevice: AVCaptureDevice?
     let fileOutput = AVCaptureMovieFileOutput()
     
     var recordButton: UIButton!
@@ -23,7 +25,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     func setUpCamera() {
         let captureSession: AVCaptureSession = AVCaptureSession()
-        let videoDevice: AVCaptureDevice? = self.defaultCamera()
+        self.videoDevice = self.defaultCamera()
         let audioDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.audio)
         
         // video input setting
@@ -45,6 +47,18 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         videoLayer.frame = self.view.bounds
         videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.view.layer.addSublayer(videoLayer)
+        
+        // zooming slider
+        let slider: UISlider = UISlider()
+        let sliderWidth: CGFloat = self.view.bounds.width * 0.75
+        let sliderHeight: CGFloat = 40
+        let sliderRect: CGRect = CGRect(x: (self.view.bounds.width - sliderWidth) / 2, y: self.view.bounds.height - 200, width: sliderWidth, height: sliderHeight)
+        slider.frame = sliderRect
+        slider.minimumValue = 0.0
+        slider.maximumValue = 1.0
+        slider.value = 0.0
+        slider.addTarget(self, action: #selector(self.onSliderChanged(sender:)), for: .valueChanged)
+        self.view.addSubview(slider)
         
         // recording button
         self.recordButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
@@ -82,6 +96,18 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
             
             self.recordButton.backgroundColor = .red
             self.recordButton.setTitle("●Recording", for: .normal)
+        }
+    }
+    
+    @objc func onSliderChanged(sender: UISlider) {
+        do {
+            try self.videoDevice?.lockForConfiguration()
+            self.videoDevice?.ramp(
+                toVideoZoomFactor: (self.videoDevice?.minAvailableVideoZoomFactor)! + CGFloat(sender.value) * ((self.videoDevice?.maxAvailableVideoZoomFactor)! - (self.videoDevice?.minAvailableVideoZoomFactor)!),
+                withRate: 30.0)
+            self.videoDevice?.unlockForConfiguration()
+        } catch {
+            print("Failed to change zoom.")
         }
     }
     
