@@ -22,9 +22,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     func setUpCamera() {
+        let captureSession: AVCaptureSession = AVCaptureSession()
         let videoDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
         let audioDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.audio)
-        let captureSession: AVCaptureSession = AVCaptureSession()
         
         // video input setting
         let videoInput: AVCaptureDeviceInput = try! AVCaptureDeviceInput(device: videoDevice!)
@@ -58,7 +58,13 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @objc func onClickRecordButton(sender: UIButton) {
-        if !self.fileOutput.isRecording {
+        if self.fileOutput.isRecording {
+            // stop recording
+            fileOutput.stopRecording()
+            
+            self.recordButton.backgroundColor = .gray
+            self.recordButton.setTitle("Record", for: .normal)
+        } else {
             // start recording
             let tempDirectory: URL = URL(fileURLWithPath: NSTemporaryDirectory())
             let fileURL: URL = tempDirectory.appendingPathComponent("mytemp1.mov")
@@ -66,12 +72,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
             
             self.recordButton.backgroundColor = .red
             self.recordButton.setTitle("●Recording", for: .normal)
-        } else {
-            // stop recording
-            fileOutput.stopRecording()
-            
-            self.recordButton.backgroundColor = .gray
-            self.recordButton.setTitle("Record", for: .normal)
         }
     }
     
