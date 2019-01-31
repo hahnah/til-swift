@@ -14,7 +14,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     let fileOutput = AVCaptureMovieFileOutput()
     
     var recordButton: UIButton!
-    var isRecording = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,20 +58,18 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @objc func onClickRecordButton(sender: UIButton) {
-        if !self.isRecording {
+        if !self.fileOutput.isRecording {
             // start recording
             let tempDirectory: URL = URL(fileURLWithPath: NSTemporaryDirectory())
             let fileURL: URL = tempDirectory.appendingPathComponent("mytemp1.mov")
             fileOutput.startRecording(to: fileURL, recordingDelegate: self)
             
-            self.isRecording = true
             self.recordButton.backgroundColor = .red
             self.recordButton.setTitle("●Recording", for: .normal)
         } else {
             // stop recording
             fileOutput.stopRecording()
             
-            self.isRecording = false
             self.recordButton.backgroundColor = .gray
             self.recordButton.setTitle("Record", for: .normal)
         }
