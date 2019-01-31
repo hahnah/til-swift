@@ -108,6 +108,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @objc func onSliderChanged(sender: UISlider) {
+        // zoom in / zoom out
         do {
             try self.videoDevice?.lockForConfiguration()
             self.videoDevice?.ramp(
