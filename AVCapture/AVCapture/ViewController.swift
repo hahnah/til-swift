@@ -37,7 +37,17 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         // max duration setting
         self.fileOutput.maxRecordedDuration = CMTimeMake(value: 60, timescale: 1)
+        
         captureSession.addOutput(fileOutput)
+        
+        // video quality setting
+        captureSession.beginConfiguration()
+        if captureSession.canSetSessionPreset(.hd4K3840x2160) {
+            captureSession.sessionPreset = .hd4K3840x2160
+        } else if captureSession.canSetSessionPreset(.high) {
+            captureSession.sessionPreset = .high
+        }
+        captureSession.commitConfiguration()
         
         captureSession.startRunning()
         
