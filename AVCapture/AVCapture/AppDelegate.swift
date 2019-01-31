@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  AVCapture
 //
-//  Created by Natsuki HARAI on 2019/01/31.
 //  Copyright © 2019年 hahnah. All rights reserved.
 //
 
