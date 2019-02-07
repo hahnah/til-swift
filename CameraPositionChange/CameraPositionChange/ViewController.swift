@@ -70,13 +70,6 @@ class ViewController: UIViewController {
     }
 
     func reverseCameraPosition() {
-        guard let captureOutput: AVCaptureMovieFileOutput = self.captureSession?.outputs.first as? AVCaptureMovieFileOutput else {
-            return
-        }
-        guard !captureOutput.isRecording else {
-            return
-        }
-        
         self.captureSession?.stopRunning()
         self.captureSession?.inputs.forEach { input in
             self.captureSession?.removeInput(input)
@@ -84,33 +77,19 @@ class ViewController: UIViewController {
         self.captureSession?.outputs.forEach { output in
             self.captureSession?.removeOutput(output)
         }
-        self.view.subviews.forEach { subview in
-            subview.removeFromSuperview()
-        }
         
         let newCameraPosition: AVCaptureDevice.Position = self.videoDevice?.position == .front ? .back : .front
         self.setupCaptureSession(withPosition: newCameraPosition)
-        
-        // the 1st half fo horizontal flip
-        let compressingAnimation = CABasicAnimation(keyPath: "transform.scale.x")
-        compressingAnimation.fromValue = 1
-        compressingAnimation.toValue = 0
-        self.view.layer.add(compressingAnimation, forKey: nil)
-        
-        // change camera preview
         let newVideoLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
         newVideoLayer.frame = self.view.bounds
         newVideoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.view.layer.replaceSublayer(self.videoLayer!, with: newVideoLayer)
-        self.videoLayer = newVideoLayer
         
-        // the 2nd half of horizontal flip
-        let expandingAnimation = CABasicAnimation(keyPath: "transform.scale.x")
-        expandingAnimation.fromValue = 0
-        expandingAnimation.toValue = 1
-        self.view.layer.add(expandingAnimation, forKey: nil)
-        
-        self.setupReverseButton()
+        // horizontal flip
+        UIView.transition(with: self.view, duration: 1.0, options: [.transitionFlipFromLeft], animations: nil, completion: { _ in
+            // replace camera preview
+            self.view.layer.replaceSublayer(self.videoLayer!, with: newVideoLayer)
+            self.videoLayer = newVideoLayer
+        })
     }
 
 }
