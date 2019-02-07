@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
-        self.setupCaptureSession(withPosition: .front)
+        self.setupCaptureSession(withPosition: .back)
         self.setupPreviewLayer()
         self.setupReverseButton()
     }
