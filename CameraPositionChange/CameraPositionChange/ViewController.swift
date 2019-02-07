@@ -78,7 +78,7 @@ class ViewController: UIViewController {
             self.captureSession?.removeOutput(output)
         }
         
-        // prepare new camera preview
+        // prepare new capture session preview with opposite camera
         let newCameraPosition: AVCaptureDevice.Position = self.videoDevice?.position == .front ? .back : .front
         self.setupCaptureSession(withPosition: newCameraPosition)
         let newVideoLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
