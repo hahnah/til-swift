@@ -7,6 +7,7 @@ Memo (or tiny project) of what I learned about Swift.
 + [AirPrint](https://github.com/hahnah/til-swift/tree/master/AirPrint) : An example usage of AirPrint 
 + [AuthorizationRequest](https://github.com/hahnah/til-swift/tree/master/AuthorizationRequest) : Request authorization of privacy
 + [AVCapture](https://github.com/hahnah/til-swift/tree/master/AVCapture) : Movie record settings using AVCapture
++ [CameraPositionChange](https://github.com/hahnah/til-swift/tree/master/CameraPositionChange) : A Sample iOS Project of camera position changing with horizontal flip animation.
 + [CameraZoom](https://github.com/hahnah/til-swift/tree/master/CameraZoom) : Camera zoom using pinch gesture recognition
 + [FileSaveUtil](https://github.com/hahnah/til-swift/tree/master/FileSaveUtil) : File save(or export) utility. (Only supports movie export so far)
 + [ModalAnimation](https://github.com/hahnah/til-swift/tree/master/ModalAnimation) : An examples of modal transition styles
