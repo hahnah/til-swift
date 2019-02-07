@@ -78,6 +78,7 @@ class ViewController: UIViewController {
             self.captureSession?.removeOutput(output)
         }
         
+        // prepare new camera preview
         let newCameraPosition: AVCaptureDevice.Position = self.videoDevice?.position == .front ? .back : .front
         self.setupCaptureSession(withPosition: newCameraPosition)
         let newVideoLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
         
         // horizontal flip
         UIView.transition(with: self.view, duration: 1.0, options: [.transitionFlipFromLeft], animations: nil, completion: { _ in
-            // replace camera preview
+            // replace camera preview with new one
             self.view.layer.replaceSublayer(self.videoLayer!, with: newVideoLayer)
             self.videoLayer = newVideoLayer
         })
