@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     var captureSession: AVCaptureSession? = nil
     var videoDevice: AVCaptureDevice?
     
-    var videoLayer: AVCaptureVideoPreviewLayer? = nil
+    var previewLayer: AVCaptureVideoPreviewLayer? = nil
     var reverseButton: UIButton = UIButton()
 
     override func viewDidLoad() {
@@ -46,11 +46,11 @@ class ViewController: UIViewController {
     }
     
     func setupPreviewLayer() {
-        // preview layer
-        self.videoLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        self.videoLayer?.frame = self.view.bounds
-        self.videoLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.view.layer.addSublayer(self.videoLayer!)
+        // camera apreview layer
+        self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        self.previewLayer?.frame = self.view.bounds
+        self.previewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.view.layer.addSublayer(self.previewLayer!)
     }
     
     func setupReverseButton() {
@@ -88,8 +88,8 @@ class ViewController: UIViewController {
         // horizontal flip
         UIView.transition(with: self.view, duration: 1.0, options: [.transitionFlipFromLeft], animations: nil, completion: { _ in
             // replace camera preview with new one
-            self.view.layer.replaceSublayer(self.videoLayer!, with: newVideoLayer)
-            self.videoLayer = newVideoLayer
+            self.view.layer.replaceSublayer(self.previewLayer!, with: newVideoLayer)
+            self.previewLayer = newVideoLayer
         })
     }
 
