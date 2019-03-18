@@ -21,7 +21,7 @@ Memo (or tiny project) of what I learned about Swift.
 
 hahnah
 
-+ WebSite: [Hahnah's Toybox](https://superhahnah.com)
++ WebSite: [Super Hahnah](https://superhahnah.com)
 + Twitter: [@superhahnah](https://twitter.com/superhahnah)
 
 ## License
